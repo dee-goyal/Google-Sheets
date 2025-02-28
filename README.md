@@ -25,13 +25,6 @@ This is a basic web application that mimics the core functionalities of Google S
   - Users can input numbers and text  
   - Basic validation for numeric cells  
 
-## Features Not Yet Implemented
-- Drag functions for cell content and formulas  
-- Advanced cell dependency management  
-- Find and replace  
-- Remove duplicates  
-- Saving and loading spreadsheets  
-- Charts and graphs  
 
 ## Tech Stack Used
 - **Frontend**: HTML, CSS, JavaScript  
