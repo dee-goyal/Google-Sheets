@@ -1,0 +1,60 @@
+/* Basic Reset */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f1f3f4;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Table Container */
+  #spreadsheet-container {
+    max-height: 70vh; /* Scroll if needed */
+    overflow: auto;
+    background-color: #fff;
+  }
+  
+  /* Spreadsheet Table */
+  #spreadsheet {
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed;
+  }
+  
+  /* Cells & Headers */
+  #spreadsheet th,
+  #spreadsheet td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    min-width: 80px;
+    max-width: 200px;
+    vertical-align: middle;
+    word-wrap: break-word;
+  }
+  
+  #spreadsheet thead th {
+    background-color: #e8eaed;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  /* Row headers (first col in each row) */
+  #spreadsheet tbody th {
+    background-color: #f8f9fa;
+    text-align: center;
+    position: sticky;
+    left: 0;
+    z-index: 1;
+  }
+  
+  /* Editable cells highlight on focus */
+  td:focus {
+    outline: 2px solid #1a73e8;
+    background-color: #e3f2fd;
+  }
+  
+  /* Active cell for formula result */
+  .active-cell {
+    outline: 2px solid #1a73e8 !important;
+    background-color: #e3f2fd !important;
+  }
+  

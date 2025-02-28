@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Sheets Clone</title>
+  <!-- Bootstrap (optional, for styling) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container-fluid p-3">
+  <!-- Title & Save/Load -->
+  <div class="d-flex justify-content-between align-items-center mb-2">
+    <h4>Google Sheets Clone</h4>
+    <div>
+      <button class="btn btn-primary btn-sm" onclick="saveSheet()">Save</button>
+      <button class="btn btn-secondary btn-sm" onclick="loadSheet()">Load</button>
+    </div>
+  </div>
+
+  <!-- Formatting Toolbar -->
+  <div class="bg-light p-2 mb-2 d-flex flex-wrap align-items-center" style="gap: 0.5rem;">
+    <!-- Basic Formatting -->
+    <button class="btn btn-light" onclick="applyFormat('bold')"><b>B</b></button>
+    <button class="btn btn-light" onclick="applyFormat('italic')"><i>I</i></button>
+    <button class="btn btn-light" onclick="applyFormat('underline')"><u>U</u></button>
+    <!-- Font Size -->
+    <select class="form-select form-select-sm" style="width:100px;" onchange="applyFontSize(this.value)">
+      <option value="12px">12px</option>
+      <option value="14px">14px</option>
+      <option value="16px">16px</option>
+      <option value="18px">18px</option>
+    </select>
+    <!-- Font Color -->
+    <input type="color" class="form-control-color" onchange="applyColor(this.value)">
+
+    <!-- Data Quality -->
+    <button class="btn btn-outline-success btn-sm" onclick="performDataQuality('trim')">TRIM</button>
+    <button class="btn btn-outline-success btn-sm" onclick="performDataQuality('upper')">UPPER</button>
+    <button class="btn btn-outline-success btn-sm" onclick="performDataQuality('lower')">LOWER</button>
+    <button class="btn btn-outline-danger btn-sm" onclick="removeDuplicates()">REMOVE DUPLICATES</button>
+    <button class="btn btn-outline-warning btn-sm" onclick="findAndReplace()">FIND & REPLACE</button>
+  </div>
+
+  <!-- Math & Row/Column Management -->
+  <div class="bg-white p-2 mb-2 d-flex flex-wrap align-items-center" style="gap: 0.5rem;">
+    <!-- Math Functions -->
+    <button class="btn btn-info btn-sm" onclick="performMath('SUM')">SUM</button>
+    <button class="btn btn-info btn-sm" onclick="performMath('AVERAGE')">AVERAGE</button>
+    <button class="btn btn-info btn-sm" onclick="performMath('MAX')">MAX</button>
+    <button class="btn btn-info btn-sm" onclick="performMath('MIN')">MIN</button>
+    <button class="btn btn-info btn-sm me-3" onclick="performMath('COUNT')">COUNT</button>
+
+    <!-- Row/Column Add/Delete -->
+    <button class="btn btn-outline-primary btn-sm" onclick="addRow()">+ Row</button>
+    <button class="btn btn-outline-primary btn-sm" onclick="addColumn()">+ Col</button>
+    <button class="btn btn-outline-danger btn-sm" onclick="deleteRow()">- Row</button>
+    <button class="btn btn-outline-danger btn-sm me-3" onclick="deleteColumn()">- Col</button>
+
+    <!-- Row/Column Resize -->
+    <button class="btn btn-outline-secondary btn-sm" onclick="resizeRow()">Resize Row</button>
+    <button class="btn btn-outline-secondary btn-sm" onclick="resizeColumn()">Resize Column</button>
+  </div>
+
+  <!-- Formula Bar -->
+  <div class="d-flex align-items-center mb-2 bg-light p-2">
+    <span class="me-2 fw-bold">fx</span>
+    <input type="text" class="form-control" id="formula-bar" placeholder="Type a formula (e.g. =A1+B2 or =SUM(A1:A5))">
+  </div>
+
+  <!-- Range Selection (for data validation, etc.) -->
+  <div class="bg-white border p-2 mb-2 d-flex align-items-center" style="gap: 0.5rem;">
+    <label for="col-select" class="m-0">Column(s):</label>
+    <input type="text" id="col-select" class="form-control form-control-sm" style="width:80px" placeholder="e.g. A,B">
+    <label for="row-start" class="m-0">Row Start:</label>
+    <input type="number" id="row-start" class="form-control form-control-sm" style="width:80px" placeholder="1">
+    <label for="row-end" class="m-0">Row End:</label>
+    <input type="number" id="row-end" class="form-control form-control-sm" style="width:80px" placeholder="5">
+  </div>
+
+  <!-- Spreadsheet Container -->
+  <div class="table-responsive border" id="spreadsheet-container">
+    <table class="table table-bordered text-start" id="spreadsheet">
+      <thead>
+        <tr>
+          <th></th>
+          <!-- Column headers will be generated in script.js -->
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Rows will be generated in script.js -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Result Display -->
+  <div class="mt-2 fw-bold" id="result-display" style="min-height:30px;"></div>
+</div>
+
+<!-- Bootstrap JS (Optional) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Main Script -->
+<script src="script.js"></script>
+</body>
+</html>
